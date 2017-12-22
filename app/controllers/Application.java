@@ -36,8 +36,8 @@ public class Application extends Controller {
                             .openConnection();
                     connection.setRequestMethod("GET");
                     connection.connect();
-                    connection.setConnectTimeout(5*1000);
-                    connection.setReadTimeout(5*1000);
+                    connection.setConnectTimeout(45*1000);
+                    connection.setReadTimeout(45*1000);
                     int code = connection.getResponseCode();
                     if (code == 200) {
                         System.out.println(">Gcom System is Running ...<");
