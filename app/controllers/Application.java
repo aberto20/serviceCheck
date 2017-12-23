@@ -24,7 +24,7 @@ public class Application extends Controller {
     public static void checkServices(){
         final long[] i = {1};
         int delay = 5000;   // delay for 5 sec.
-        int interval = 1000;  // iterate every sec.
+        int interval = 60*1000;  // iterate every sec.
         Timer timer=new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
@@ -41,10 +41,10 @@ public class Application extends Controller {
                     int code = connection.getResponseCode();
                     if (code == 200) {
                         System.out.println(">Gcom System is Running ...<");
-                        i[0] += 1;
+                        i[0] = 0;
                     }
                 } catch (Exception e) {
-                    if (i[0]!=0){
+                    if (i[0]==5){
                         String[]getphone={"250785185421","250784676994","250788730942"};
                         String usernamePassword="0784676994:gcom@123";
                         String encoded = Base64.getEncoder().encodeToString(usernamePassword.getBytes());
@@ -78,8 +78,9 @@ public class Application extends Controller {
                             }
 
                         }
+
                     }
-                    i[0]= 0;
+                    i[0]+= 1;
                 }
 
             }
